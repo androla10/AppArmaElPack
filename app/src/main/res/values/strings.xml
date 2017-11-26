@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Control de Entregas</string>
+    <string name="btnIngresar">INGRESAR</string>
+
+    <string name="registrousuario">REGISTRO USUARIO</string>
+
+
+    <string name="guardarClave">Guardar Contraseña</string>
+    <string name="olvido">¿Olvido Contraseña?</string>
+    <string name="celular">Celular</string>
+    <string name="correo">Usuario|Correo</string>
+    <string name="password">Contraseña</string>
+    <string name="nombre">Nombres</string>
+    <string name="apellidos">Apellidos</string>
+    <string name="fecNac">Fecha de nacimiento</string>
+    <string name="correo1">Correo</string>
+    <string name="proposito">Porposito</string>
+    <string name="saldocritico">Saldo mínimo</string>
+
+
+    <string name="aceptar">ACEPTAR</string>
+    <string name="acepatr1">Aceptar Terminos</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="letra1">20sp</dimen>
+    <dimen name="letra2">15sp</dimen>
+    <dimen name="letraPregunta1">15sp</dimen>
+    <dimen name="boton1">30sp</dimen>
+
+
+</resources>
