@@ -8,6 +8,10 @@
     tools:context="com.armaelpack.armaelpack_envios.MainActivity">
 
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        />
 
     <TextView
         android:layout_width="wrap_content"

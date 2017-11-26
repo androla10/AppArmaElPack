@@ -25,19 +25,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar =findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        Usuario usuario = Control.getMiInstancia().miUsuario;
+
+        TextView tvNombreToolbarTrans = findViewById(R.id.tvNombreToolbar);
+        tvNombreToolbarTrans.setText("Hola: "+ usuario.getApellidoPaterno()+" "+usuario.getApellidoMaterno()+", "+usuario.getNombreCompleto());
+
+
+
         TextView tvUserName = findViewById(R.id.tvusername);
         TextView tvNombreCompleto = findViewById(R.id.tvnombreCompleto);
         TextView tvApellidoPaterno = findViewById(R.id.tvapellidoPaterno);
         TextView tvApellidoMaterno = findViewById(R.id.tvapellidoMaterno);
 
 
-        Usuario usuario = Control.getMiInstancia().miUsuario;
+
 
         tvUserName.setText(usuario.getUsername());
         tvNombreCompleto.setText(usuario.getNombreCompleto());
         tvApellidoPaterno.setText(usuario.getApellidoPaterno());
         tvApellidoMaterno.setText(usuario.getApellidoMaterno());
-
 
 
 

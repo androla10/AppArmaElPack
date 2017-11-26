@@ -18,6 +18,8 @@
     <string name="saldocritico">Saldo mínimo</string>
 
 
+    <string name="pedidosPendientes">Pedidos Pendientes</string>
+
     <string name="aceptar">ACEPTAR</string>
     <string name="acepatr1">Aceptar Terminos</string>
 </resources>
