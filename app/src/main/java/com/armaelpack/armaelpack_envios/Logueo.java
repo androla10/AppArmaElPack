@@ -25,24 +25,12 @@ import static com.android.volley.Response.*;
 
 public class Logueo extends AppCompatActivity {
 
-/*
-    //para que funcione el guardado de clasves
-    String valorusuario = "admin";
-    String valorclave = "123456";
-    final String VAL_PREFERENCIA = "MiPreferencia";
-    final String KEY_USUARIO = "KeyUsuario";
-    final String KEY_CLAVE = "KeyClave";
-    final String KEY_CHECK="KeyCheck";
-*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logueo);
-        //INICIA EL TOOLBAR
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //
 
         final TextInputEditText etUsuario = findViewById(R.id.etUsuario);
         final TextInputEditText etClave = findViewById(R.id.etClave);
@@ -54,7 +42,6 @@ public class Logueo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                System.out.print("Estamos en el click");
                 String username = etUsuario.getText().toString();
                 String password = etClave.getText().toString();
 
@@ -93,7 +80,6 @@ public class Logueo extends AppCompatActivity {
                                         finish();
 
                                     }catch (Exception e){
-                                        System.out.print("Primer cath!!");
                                         e.printStackTrace();
                                     }
                                     }
@@ -101,8 +87,7 @@ public class Logueo extends AppCompatActivity {
                                 new ErrorListener() {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
-                                        System.out.print("Segundo cath!!");
-                                        System.out.print("Estamos en el puto error volley");
+                                        error.getNetworkTimeMs();
                                     }
                                 }
                         );
@@ -110,7 +95,6 @@ public class Logueo extends AppCompatActivity {
                         requestQueue.add(objectRequest);
                     }
                     catch (Exception e){
-                        System.out.print("Estamos en el Tercer cath");
                         e.printStackTrace();
 
                     }
