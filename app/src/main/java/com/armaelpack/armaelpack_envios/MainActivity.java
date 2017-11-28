@@ -25,21 +25,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //ASIGNAMOS EL TOOLBAR AL PROYECTO
         Toolbar toolbar =findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Usuario usuario = Control.getMiInstancia().miUsuario;
 
-        TextView tvNombreToolbarTrans = findViewById(R.id.tvNombreToolbar);
-        tvNombreToolbarTrans.setText("Hola: "+ usuario.getApellidoPaterno()+" "+usuario.getApellidoMaterno()+", "+usuario.getNombreCompleto());
-
-
-
         TextView tvUserName = findViewById(R.id.tvusername);
         TextView tvNombreCompleto = findViewById(R.id.tvnombreCompleto);
         TextView tvApellidoPaterno = findViewById(R.id.tvapellidoPaterno);
         TextView tvApellidoMaterno = findViewById(R.id.tvapellidoMaterno);
+
+
+        //Llamamos al TOOLBAR
+        TextView tvNombreToolbarTrans = findViewById(R.id.tvNombreToolbar);
+        tvNombreToolbarTrans.setText("Hola: "+ usuario.getApellidoPaterno()+" "+usuario.getApellidoMaterno()+", "+usuario.getNombreCompleto());
+        toolbar.setTitle("Holaaa");
+
+
+
 
 
 
