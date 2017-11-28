@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >\
+        <item name="colorPrimary">@color/toolbarcolor</item>
+        <item name="colorPrimaryDark">@color/toolbarcolor</item>
+        <item name="colorAccent">@color/toolbarcolor</item>
+    </style>
+
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

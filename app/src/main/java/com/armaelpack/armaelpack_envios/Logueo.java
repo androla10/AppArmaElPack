@@ -37,6 +37,15 @@ public class Logueo extends AppCompatActivity {
         final CheckBox checkBox = findViewById(R.id.checkBox);
         final Button btnIngresar = findViewById(R.id.btnIngresar);
 
+        Button btnPrueba = findViewById(R.id.btnPrueba);
+        btnPrueba.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Logueo.this,PantallaPrincipal.class);
+                startActivity(intent);
+            }
+        });
+
 
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
