@@ -30,5 +30,12 @@
     <string name="action_settings">Log out</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragmenTitulo">Detalle Compra</string>
+    <string name="fragmenNombre">Nombre</string>
+    <string name="fragmentCelular">Celular</string>
+    <string name="fragmentCorreo">Correo</string>
+    <string name="fragmentTitulo2">Lista de Productos</string>
+    <string name="fragmentMontoTotal">Monto Total</string>
+    <string name="fragmentVerDireccion">Ver Dirección</string>
+    <string name="fragmentGuardar">GUARDAR</string>
 </resources>
