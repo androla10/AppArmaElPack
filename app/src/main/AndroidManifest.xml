@@ -12,6 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAS4IM_pmDJ5t0lNCVb1Q45TIp6yR4HDwM" />
+
+
+
         <activity android:name=".MainActivity" />
         <activity android:name=".Logueo" />
         <activity android:name=".Splash">
