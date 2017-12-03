@@ -38,4 +38,7 @@
     <string name="fragmentMontoTotal">Monto Total</string>
     <string name="fragmentVerDireccion">Ver Dirección</string>
     <string name="fragmentGuardar">GUARDAR</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

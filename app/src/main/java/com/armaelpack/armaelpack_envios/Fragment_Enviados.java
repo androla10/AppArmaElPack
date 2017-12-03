@@ -10,16 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Fragment_Pendientes.OnFragmentInteractionListener} interface
+ * {@link Fragment_Enviados.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class Fragment_Pendientes extends Fragment {
+public class Fragment_Enviados extends Fragment {
+
     private OnFragmentInteractionListener mListener;
-    public Fragment_Pendientes() {
+
+    public Fragment_Enviados() {
         // Required empty public constructor
     }
 
@@ -27,17 +28,17 @@ public class Fragment_Pendientes extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //se crear el view para que se pueda visualizar los datos en la pantalla.
-        View view = inflater.inflate(R.layout.fragment_fragment__pendientes, container, false);
-        Button btnFragmentPrueba = view.findViewById(R.id.btnPruebaFragmemnt);
-        btnFragmentPrueba.setOnClickListener(new View.OnClickListener() {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment__enviados, container, false);
+
+        Button btnEnviosFragment = view.findViewById(R.id.btnEnvioFragmemnt);
+        btnEnviosFragment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getContext(),DetalleEnvio.class);
+                Intent intent = new Intent(getContext(),DetalleEnvio.class);
                 startActivity(intent);
             }
         });
-
 
         return view;
     }

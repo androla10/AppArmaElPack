@@ -89,6 +89,7 @@ public class Logueo extends AppCompatActivity {
                                         finish();
 
                                     }catch (Exception e){
+
                                         e.printStackTrace();
                                     }
                                     }
@@ -96,6 +97,7 @@ public class Logueo extends AppCompatActivity {
                                 new ErrorListener() {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
+
                                         error.getNetworkTimeMs();
                                     }
                                 }
