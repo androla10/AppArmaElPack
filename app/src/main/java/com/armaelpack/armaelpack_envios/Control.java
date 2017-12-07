@@ -1,5 +1,7 @@
 package com.armaelpack.armaelpack_envios;
 
+import com.armaelpack.armaelpack_envios.com.armaelpack.armaelpack_envios.model.Pedido;
+import com.armaelpack.armaelpack_envios.com.armaelpack.armaelpack_envios.model.Producto;
 import com.armaelpack.armaelpack_envios.com.armaelpack.armaelpack_envios.model.Usuario;
 
 /**
@@ -13,6 +15,9 @@ class Control {
 
         return miControl;
     }
+
+    public Producto miProductoActual;
+    public Pedido miPedidoActual;
 
     public Usuario miUsuario;
 

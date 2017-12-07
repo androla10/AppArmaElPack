@@ -84,7 +84,7 @@ public class Logueo extends AppCompatActivity {
 
                                         Control.getMiInstancia().miUsuario=usu;
 
-                                        Intent intent = new Intent(Logueo.this,MainActivity.class);
+                                        Intent intent = new Intent(Logueo.this,PantallaPrincipal.class);
                                         startActivity(intent);
                                         finish();
 
