@@ -8,9 +8,9 @@ public class Producto {
 
     private String codigoProducto;
     private String idProducto;
-    private String nombre;
-    private int cantidad;
-    private double total;
+    private String nombrePro;
+    private int cantidadPro;
+    private double totalPro;
 
     public String getCodigoProducto() {
         return codigoProducto;
@@ -28,27 +28,27 @@ public class Producto {
         this.idProducto = idProducto;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombrePro() {
+        return nombrePro;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombrePro(String nombrePro) {
+        this.nombrePro = nombrePro;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public int getCantidadPro() {
+        return cantidadPro;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setCantidadPro(int cantidadPro) {
+        this.cantidadPro = cantidadPro;
     }
 
-    public double getTotal() {
-        return total;
+    public double getTotalPro() {
+        return totalPro;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
+    public void setTotalPro(double totalPro) {
+        this.totalPro = totalPro;
     }
 }

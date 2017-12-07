@@ -40,9 +40,17 @@ public class PedidoAdapter extends ArrayAdapter<Pedido> {
         }
 
         ImageView imEstadoPedido = view.findViewById(R.id.imEstadoPedido);
-        TextView tvNombreClientePedido = view.findViewById(R.id.bre);
+        TextView tvNombreClientePedido = view.findViewById(R.id.tvNombreClientePedido);
+        TextView tvCodigoPedido = view.findViewById(R.id.tvCodigoPedido);
+        TextView tvCurrencyPedido = view.findViewById(R.id.tvCurrencyPedido);
+        TextView tvTotalPedido = view.findViewById(R.id.tvTotalPedido);
+
+        tvNombreClientePedido.setText(miListaPedidos.get(position).getNomCliente());
+        tvCodigoPedido.setText(miListaPedidos.get(position).getCodPedido());
+        tvCurrencyPedido.setText(miListaPedidos.get(position).getCurrency());
+        tvTotalPedido.setText(String.valueOf(miListaPedidos.get(position).getVentaTotal()));
 
 
-        return super.getView(position, convertView, parent);
+        return view;
     }
 }

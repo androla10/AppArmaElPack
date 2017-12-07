@@ -15,6 +15,8 @@ public class Pedido {
     private String longitudDestino;
     private String fechEmitido;
     private String fechEntrega;
+    private String celular;
+    private String correo;
     private String estado;
 
     public int getIdPedido() {
@@ -79,6 +81,22 @@ public class Pedido {
 
     public void setLongitudDestino(String longitudDestino) {
         this.longitudDestino = longitudDestino;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getEstado() {
