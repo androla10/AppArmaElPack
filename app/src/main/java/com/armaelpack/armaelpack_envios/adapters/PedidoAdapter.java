@@ -39,8 +39,8 @@ public class PedidoAdapter extends ArrayAdapter<Pedido> {
             view = inflater.inflate(R.layout.detalle_lista_pedidos,null);
         }
 
-        ImageView imEstadoPedido = (ImageView) view.findViewById(R.id.imEstadoPedido);
-        TextView tvNombreClientePedido = view.findViewById(R.id.tvNom)
+        ImageView imEstadoPedido = view.findViewById(R.id.imEstadoPedido);
+        TextView tvNombreClientePedido = view.findViewById(R.id.bre);
 
 
         return super.getView(position, convertView, parent);
