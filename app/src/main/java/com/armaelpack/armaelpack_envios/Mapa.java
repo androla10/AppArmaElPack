@@ -45,7 +45,7 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback,Locati
         Pedido pedido = Control.getMiInstancia().miPedidoActual;
 
 
-        LatLng ubicacion = new LatLng(Double.valueOf(pedido.getLatitudDestrino()),Double.valueOf(pedido.getLongitudDestino()));
+        LatLng ubicacion = new LatLng(Double.valueOf(pedido.getLatitud()),Double.valueOf(pedido.getLongitud()));
         mMap.addMarker(new MarkerOptions().position(ubicacion)).setTitle(pedido.getNomCliente());
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion,15));
 

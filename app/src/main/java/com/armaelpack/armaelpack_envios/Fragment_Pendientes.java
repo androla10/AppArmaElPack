@@ -18,6 +18,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
 import com.armaelpack.armaelpack_envios.adapters.PedidoAdapter;
 import com.armaelpack.armaelpack_envios.com.armaelpack.armaelpack_envios.model.Pedido;
@@ -62,14 +64,17 @@ public class Fragment_Pendientes extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Pedido pedido = new Pedido();
-                pedido.setIdPedido(lstPendientes.get(i).getIdPedido());
-                pedido.setCodPedido(lstPendientes.get(i).getCodPedido());
+                pedido.setId(lstPendientes.get(i).getId());
+                pedido.setCodigoPedido(lstPendientes.get(i).getCodigoPedido());
                 pedido.setNomCliente(lstPendientes.get(i).getNomCliente());
-                pedido.setVentaTotal(lstPendientes.get(i).getVentaTotal());
-                pedido.setCurrency(lstPendientes.get(i).getCurrency());
-                pedido.setCurrencyName(lstPendientes.get(i).getCurrencyName());
-                pedido.setLatitudDestrino(lstPendientes.get(i).getLatitudDestrino());
-                pedido.setLongitudDestino(lstPendientes.get(i).getLongitudDestino());
+                pedido.setTotalNeto(lstPendientes.get(i).getTotalNeto());
+                pedido.setLatitud(lstPendientes.get(i).getLatitud());
+                pedido.setLongitud(lstPendientes.get(i).getLongitud());
+                pedido.setFechaEmitido(lstPendientes.get(i).getFechaEmitido());
+                pedido.setFechaEntrega(lstPendientes.get(i).getFechaEntrega());
+                pedido.setCelular(lstPendientes.get(i).getCelular());
+                pedido.setCorreo(lstPendientes.get(i).getCorreo());
+                pedido.setEstado(lstPendientes.get(i).getEstado());
 
                 if(pedido != null){
                     Control.getMiInstancia().miPedidoActual=pedido;
@@ -82,7 +87,7 @@ public class Fragment_Pendientes extends Fragment {
 
             }
         });
-
+/*
 
         Button btnFragmentPrueba = view.findViewById(R.id.btnPruebaFragmemnt);
         btnFragmentPrueba.setOnClickListener(new View.OnClickListener() {
@@ -93,55 +98,72 @@ public class Fragment_Pendientes extends Fragment {
             }
         });
 
-
+*/
         obtenerPendientes();
         return view;
     }
 
     public void obtenerPendientes(){
-        String urlPendientes = "ingresar link de enviados";
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-                Request.Method.GET,
-                urlPendientes,
-                null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
+        String urlPendientes = "http://10.143.143.127:8080/Home/listadoPedido";
 
-                        try {
-                            if (response.length() > 0){
-                                for (int i =0;i<response.length();i++){
-                                    JSONObject jsonObject = response.getJSONObject(i);
-                                    Pedido ped = new Pedido();
-                                    ped.setIdPedido(jsonObject.getInt("idPedido"));
-                                    ped.setCodPedido(jsonObject.getString("codigoPedido"));
-                                    ped.setNomCliente(jsonObject.getString("nombreCliente"));
-                                    ped.setVentaTotal(jsonObject.getString("ventaTotal"));
-                                    ped.setCurrency(jsonObject.getString("Currency"));
-                                    ped.setCurrencyName(jsonObject.getString("CurrencyName"));
-                                    ped.setLatitudDestrino(jsonObject.getString("latitudDestino"));
-                                    ped.setLongitudDestino(jsonObject.getString("longitudDestino"));
+        int estadoPendiente = 1;
+        try {
+            System.out.print("Entro Al JsonObject");
+            JSONObject object = new JSONObject();
+            object.put("iEstado",estadoPendiente);
 
-                                    // Control.getMiInstancia().miPedidoActual=ped;
-                                    lstPendientes.add(ped);
+            JSONArray json = new JSONArray();
+            json.put(object);
+
+            RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                    Request.Method.POST,
+                    urlPendientes,
+                    json,
+                    new Response.Listener<JSONArray>() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+
+                            try {
+                                if (response.length() > 0) {
+                                    for (int i = 0; i < response.length(); i++) {
+                                        JSONObject jsonObject = response.getJSONObject(i);
+                                        Pedido ped = new Pedido();
+                                        ped.setId(jsonObject.getInt("idPedido"));
+                                        ped.setCodigoPedido(jsonObject.getString("codigoPedido"));
+                                        ped.setNomCliente(jsonObject.getString("nombreCliente"));
+                                        ped.setTotalNeto(jsonObject.getString("totalNeto"));
+                                        ped.setLatitud(jsonObject.getString("latitud"));
+                                        ped.setLongitud(jsonObject.getString("longitud"));
+                                        ped.setFechaEmitido(jsonObject.getString("fechaPedido"));
+                                        ped.setFechaEntrega(jsonObject.getString("fechaEntrega"));
+                                        ped.setCorreo(jsonObject.getString("correo"));
+                                        ped.setCelular(jsonObject.getString("celular"));
+                                        ped.setEstado(jsonObject.getInt("estado"));
+
+                                        // Control.getMiInstancia().miPedidoActual=ped;
+                                        lstPendientes.add(ped);
+                                    }
+                                    pedidoAdapter = new PedidoAdapter(getContext(), lstPendientes);
+                                    lvPendientes.setAdapter(pedidoAdapter);
                                 }
-                                pedidoAdapter=new PedidoAdapter(getContext(),lstPendientes);
-                                lvPendientes.setAdapter(pedidoAdapter);
+                            } catch (JSONException j) {
+                                j.printStackTrace();
                             }
-                        }catch (JSONException j){
-                            j.printStackTrace();
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            error.getNetworkTimeMs();
                         }
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.getNetworkTimeMs();
-                    }
-                }
-        );
-        requestQueue.add(jsonArrayRequest);
+            );
+            requestQueue.add(jsonArrayRequest);
+        }catch (Exception e){
+                e.printStackTrace();
+
+            }
     }
 
 

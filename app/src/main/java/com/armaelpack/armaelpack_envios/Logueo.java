@@ -37,6 +37,7 @@ public class Logueo extends AppCompatActivity {
         final CheckBox checkBox = findViewById(R.id.checkBox);
         final Button btnIngresar = findViewById(R.id.btnIngresar);
 
+        /*
         Button btnPrueba = findViewById(R.id.btnPrueba);
         btnPrueba.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +46,7 @@ public class Logueo extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+*/
 
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +59,7 @@ public class Logueo extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Por favor ingrese usuario/clave",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    String url = "http://10.143.143.247:53845/Login/login";
+                    String url = "http://10.143.143.127:8080/Login/loginApp";
 
                     try{
                         System.out.print("Entro Al JsonObject");

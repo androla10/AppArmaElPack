@@ -5,34 +5,32 @@ package com.armaelpack.armaelpack_envios.com.armaelpack.armaelpack_envios.model;
  */
 
 public class Pedido {
-    private int idPedido;
-    private String codPedido;
+    private int id;
+    private String codigoPedido;
     private String nomCliente;
-    private String ventaTotal;
-    private String currency;
-    private String currencyName;
-    private String latitudDestrino;
-    private String longitudDestino;
-    private String fechEmitido;
-    private String fechEntrega;
+    private String totalNeto;
+    private String latitud;
+    private String longitud;
+    private String fechaEmitido;
+    private String fechaEntrega;
     private String celular;
     private String correo;
-    private String estado;
+    private int estado;
 
-    public int getIdPedido() {
-        return idPedido;
+    public int getId() {
+        return id;
     }
 
-    public void setIdPedido(int idPedido) {
-        this.idPedido = idPedido;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getCodPedido() {
-        return codPedido;
+    public String getCodigoPedido() {
+        return codigoPedido;
     }
 
-    public void setCodPedido(String codPedido) {
-        this.codPedido = codPedido;
+    public void setCodigoPedido(String codigoPedido) {
+        this.codigoPedido = codigoPedido;
     }
 
     public String getNomCliente() {
@@ -43,44 +41,44 @@ public class Pedido {
         this.nomCliente = nomCliente;
     }
 
-    public String getVentaTotal() {
-        return ventaTotal;
+    public String getTotalNeto() {
+        return totalNeto;
     }
 
-    public void setVentaTotal(String ventaTotal) {
-        this.ventaTotal = ventaTotal;
+    public void setTotalNeto(String totalNeto) {
+        this.totalNeto = totalNeto;
     }
 
-    public String getCurrency() {
-        return currency;
+    public String getLatitud() {
+        return latitud;
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    public void setLatitud(String latitud) {
+        this.latitud = latitud;
     }
 
-    public String getCurrencyName() {
-        return currencyName;
+    public String getLongitud() {
+        return longitud;
     }
 
-    public void setCurrencyName(String currencyName) {
-        this.currencyName = currencyName;
+    public void setLongitud(String longitud) {
+        this.longitud = longitud;
     }
 
-    public String getLatitudDestrino() {
-        return latitudDestrino;
+    public String getFechaEmitido() {
+        return fechaEmitido;
     }
 
-    public void setLatitudDestrino(String latitudDestrino) {
-        this.latitudDestrino = latitudDestrino;
+    public void setFechaEmitido(String fechaEmitido) {
+        this.fechaEmitido = fechaEmitido;
     }
 
-    public String getLongitudDestino() {
-        return longitudDestino;
+    public String getFechaEntrega() {
+        return fechaEntrega;
     }
 
-    public void setLongitudDestino(String longitudDestino) {
-        this.longitudDestino = longitudDestino;
+    public void setFechaEntrega(String fechaEntrega) {
+        this.fechaEntrega = fechaEntrega;
     }
 
     public String getCelular() {
@@ -99,27 +97,11 @@ public class Pedido {
         this.correo = correo;
     }
 
-    public String getEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
-    }
-
-    public String getFechEmitido() {
-        return fechEmitido;
-    }
-
-    public void setFechEmitido(String fechEmitido) {
-        this.fechEmitido = fechEmitido;
-    }
-
-    public String getFechEntrega() {
-        return fechEntrega;
-    }
-
-    public void setFechEntrega(String fechEntrega) {
-        this.fechEntrega = fechEntrega;
     }
 }

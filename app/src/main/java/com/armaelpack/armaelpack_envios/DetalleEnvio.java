@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -30,6 +31,7 @@ import com.armaelpack.armaelpack_envios.com.armaelpack.armaelpack_envios.model.P
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +48,11 @@ public class DetalleEnvio extends AppCompatActivity {
     private ListView lvProducto;
 
 
+    private TextView tvNombreClienteFrag;
+    private TextView tvCelularFragment;
+    private TextView tvCorreoFragmentFragment;
+    private TextView tvTotalNeto;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +62,18 @@ public class DetalleEnvio extends AppCompatActivity {
         /**mostrar el toolbar**/
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        tvNombreClienteFrag = findViewById(R.id.tvNombreClienteFrag);
+        tvCelularFragment=findViewById(R.id.tvCelularFragment);
+        tvCorreoFragmentFragment=findViewById(R.id.tvCorreoFragmentFragment);
+        tvTotalNeto=findViewById(R.id.tvTotalNeto);
+
+        Pedido pedido =Control.getMiInstancia().miPedidoActual;
+        tvNombreClienteFrag.setText(pedido.getNomCliente());
+        tvCelularFragment.setText(pedido.getCelular());
+        tvCorreoFragmentFragment.setText(pedido.getCorreo());
+        tvTotalNeto.setText(String.valueOf(pedido.getTotalNeto()));
 
 
         lvProducto=findViewById(R.id.lvDetalle);
@@ -105,7 +124,7 @@ public class DetalleEnvio extends AppCompatActivity {
                                 for (int i=0;i<response.length();i++){
                                     JSONObject jsonObject= response.getJSONObject(i);
                                     Producto producto = new Producto();
-                                    producto.setIdProducto(jsonObject.getInt("idProducto"));
+                                    producto.setIdPedido(jsonObject.getInt("idProducto"));
                                     producto.setCodigoProducto(jsonObject.getString("codigoProducto"));
                                     producto.setNombrePro(jsonObject.getString("nombre"));
                                     producto.setCantidadPro(jsonObject.getInt("cantidad"));

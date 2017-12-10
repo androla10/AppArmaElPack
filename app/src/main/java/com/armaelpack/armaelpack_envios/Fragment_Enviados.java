@@ -58,14 +58,17 @@ public class Fragment_Enviados extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Pedido pedido = new Pedido();
-                pedido.setIdPedido(lstPedido.get(i).getIdPedido());
-                pedido.setCodPedido(lstPedido.get(i).getCodPedido());
+                pedido.setId(lstPedido.get(i).getId());
+                pedido.setCodigoPedido(lstPedido.get(i).getCodigoPedido());
                 pedido.setNomCliente(lstPedido.get(i).getNomCliente());
-                pedido.setVentaTotal(lstPedido.get(i).getVentaTotal());
-                pedido.setCurrency(lstPedido.get(i).getCurrency());
-                pedido.setCurrencyName(lstPedido.get(i).getCurrencyName());
-                pedido.setLatitudDestrino(lstPedido.get(i).getLatitudDestrino());
-                pedido.setLongitudDestino(lstPedido.get(i).getLongitudDestino());
+                pedido.setTotalNeto(lstPedido.get(i).getTotalNeto());
+                pedido.setLatitud(lstPedido.get(i).getLatitud());
+                pedido.setLongitud(lstPedido.get(i).getLongitud());
+                pedido.setFechaEmitido(lstPedido.get(i).getFechaEmitido());
+                pedido.setFechaEntrega(lstPedido.get(i).getFechaEntrega());
+                pedido.setCelular(lstPedido.get(i).getCelular());
+                pedido.setCorreo(lstPedido.get(i).getCorreo());
+                pedido.setEstado(lstPedido.get(i).getEstado());
 
                     if(pedido != null){
                         Control.getMiInstancia().miPedidoActual=pedido;
@@ -79,7 +82,7 @@ public class Fragment_Enviados extends Fragment {
             }
         });
 
-
+/*
         Button btnEnviosFragment = view.findViewById(R.id.btnEnvioFragmemnt);
         btnEnviosFragment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +91,7 @@ public class Fragment_Enviados extends Fragment {
                 startActivity(intent);
             }
         });
-
+*/
 
         obtenerEnviados();
 
@@ -114,14 +117,17 @@ public class Fragment_Enviados extends Fragment {
                                 for (int i =0;i<response.length();i++){
                                     JSONObject jsonObject = response.getJSONObject(i);
                                     Pedido ped = new Pedido();
-                                    ped.setIdPedido(jsonObject.getInt("idPedido"));
-                                    ped.setCodPedido(jsonObject.getString("codigoPedido"));
+                                    ped.setId(jsonObject.getInt("idPedido"));
+                                    ped.setCodigoPedido(jsonObject.getString("codigoPedido"));
                                     ped.setNomCliente(jsonObject.getString("nombreCliente"));
-                                    ped.setVentaTotal(jsonObject.getString("ventaTotal"));
-                                    ped.setCurrency(jsonObject.getString("Currency"));
-                                    ped.setCurrencyName(jsonObject.getString("CurrencyName"));
-                                    ped.setLatitudDestrino(jsonObject.getString("latitudDestino"));
-                                    ped.setLongitudDestino(jsonObject.getString("longitudDestino"));
+                                    ped.setTotalNeto(jsonObject.getString("totalNeto"));
+                                    ped.setLatitud(jsonObject.getString("latitud"));
+                                    ped.setLongitud(jsonObject.getString("longitud"));
+                                    ped.setFechaEmitido(jsonObject.getString("fechaPedido"));
+                                    ped.setFechaEntrega(jsonObject.getString("fechaEntrega"));
+                                    ped.setCorreo(jsonObject.getString("correo"));
+                                    ped.setCelular(jsonObject.getString("celular"));
+                                    ped.setEstado(jsonObject.getInt("estado"));
 
                                    // Control.getMiInstancia().miPedidoActual=ped;
                                     lstPedido.add(ped);
