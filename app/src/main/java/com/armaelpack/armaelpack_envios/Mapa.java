@@ -5,9 +5,13 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.armaelpack.armaelpack_envios.com.armaelpack.armaelpack_envios.model.Pedido;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -27,6 +31,9 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback,Locati
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         SupportMapFragment mapFragment= (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentMapa);
         mapFragment.getMapAsync(this);
 
@@ -35,8 +42,11 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback,Locati
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng ubicacion = new LatLng(-12.122294,-77.028323);
-        mMap.addMarker(new MarkerOptions().position(ubicacion));
+        Pedido pedido = Control.getMiInstancia().miPedidoActual;
+
+
+        LatLng ubicacion = new LatLng(Double.valueOf(pedido.getLatitudDestrino()),Double.valueOf(pedido.getLongitudDestino()));
+        mMap.addMarker(new MarkerOptions().position(ubicacion)).setTitle(pedido.getNomCliente());
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion,15));
 
         try {
@@ -81,4 +91,32 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback,Locati
     public void onProviderDisabled(String s) {
 
     }
+
+
+
+
+    /**ESTOS DOS METODOS SON PARA PODER CONTROLAR EL MENU DE LA ESQUINA SUPERIOR DERECHA(LOGOUT)**/
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.mapapedidos, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_guardar) {
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    /**Se terminan los metodos**/
 }

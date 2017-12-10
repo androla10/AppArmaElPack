@@ -7,7 +7,7 @@ package com.armaelpack.armaelpack_envios.com.armaelpack.armaelpack_envios.model;
 public class Producto {
 
     private String codigoProducto;
-    private String idProducto;
+    private int idProducto;
     private String nombrePro;
     private int cantidadPro;
     private double totalPro;
@@ -20,11 +20,11 @@ public class Producto {
         this.codigoProducto = codigoProducto;
     }
 
-    public String getIdProducto() {
+    public int getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(String idProducto) {
+    public void setIdProducto(int idProducto) {
         this.idProducto = idProducto;
     }
 

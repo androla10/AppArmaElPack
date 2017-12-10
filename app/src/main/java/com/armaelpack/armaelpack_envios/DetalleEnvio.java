@@ -14,13 +14,36 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+import com.armaelpack.armaelpack_envios.adapters.ProductoAdapter;
+import com.armaelpack.armaelpack_envios.com.armaelpack.armaelpack_envios.model.Pedido;
+import com.armaelpack.armaelpack_envios.com.armaelpack.armaelpack_envios.model.Producto;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DetalleEnvio extends AppCompatActivity {
 
     /**VARIABLES PARA MANEJO DE MAPAS**/
     final int PERMISO_GPS=0;
     boolean tienePermiso = false;
+
+    /**variables para el service**/
+    private List<Producto> lstProducto = new ArrayList<>();
+    private ProductoAdapter productoAdapter;
+    private ListView lvProducto;
 
 
 
@@ -34,6 +57,7 @@ public class DetalleEnvio extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+        lvProducto=findViewById(R.id.lvDetalle);
         /**PARA QUE FUNCIONE EL BOTON E VER EL MAPA**/
         Button btnVerDireccion = findViewById(R.id.btnVerDireccion);
         btnVerDireccion.setOnClickListener(new View.OnClickListener() {
@@ -58,10 +82,62 @@ public class DetalleEnvio extends AppCompatActivity {
         }
 
 
+        obtenerProducto();
 
 
 
     }
+
+
+
+    public void obtenerProducto(){
+        String urlProducto = "";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                urlProducto,
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            if (response.length()>0){
+                                for (int i=0;i<response.length();i++){
+                                    JSONObject jsonObject= response.getJSONObject(i);
+                                    Producto producto = new Producto();
+                                    producto.setIdProducto(jsonObject.getInt("idProducto"));
+                                    producto.setCodigoProducto(jsonObject.getString("codigoProducto"));
+                                    producto.setNombrePro(jsonObject.getString("nombre"));
+                                    producto.setCantidadPro(jsonObject.getInt("cantidad"));
+                                    producto.setTotalPro(jsonObject.getDouble("total"));
+
+
+                                    lstProducto.add(producto);
+                                }
+
+                                productoAdapter = new ProductoAdapter(getApplicationContext(),lstProducto);
+                                lvProducto.setAdapter(productoAdapter);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.getNetworkTimeMs();
+                    }
+                }
+        );
+    }
+
+
+
+
+
+
 
 
 
