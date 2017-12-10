@@ -14,7 +14,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.armaelpack.armaelpack_envios.com.armaelpack.armaelpack_envios.model.Usuario;
 
 public class PantallaPrincipal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,Fragment_Pendientes.OnFragmentInteractionListener,
@@ -30,6 +33,14 @@ Fragment_Enviados.OnFragmentInteractionListener{
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        TextView tvNombreDelivery = findViewById(R.id.tvNombreDelivery);
+        TextView tvCorreoDelivery=findViewById(R.id.tvCorreoDelivery);
+        Usuario usuario = Control.getMiInstancia().miUsuario;
+        tvNombreDelivery.setText(usuario.getApellidoPaterno()+" "+usuario.getApellidoMaterno()+", "+usuario.getNombreCompleto());
+        tvCorreoDelivery.setText(usuario.getUsername());
+
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
