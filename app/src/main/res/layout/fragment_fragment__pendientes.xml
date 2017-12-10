@@ -21,7 +21,7 @@
 
 
     </LinearLayout>
-<!--
+
     <Button
         android:layout_gravity="center"
         android:layout_marginTop="-70dp"
@@ -29,6 +29,5 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnPruebaFragmemnt"
         android:text="DETALLE PEDIDO"/>
--->
 
 </LinearLayout>

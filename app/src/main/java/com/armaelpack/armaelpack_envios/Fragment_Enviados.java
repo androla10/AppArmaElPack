@@ -107,7 +107,6 @@ public class Fragment_Enviados extends Fragment {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 urlEnviados,
-                null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {

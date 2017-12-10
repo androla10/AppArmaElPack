@@ -115,7 +115,6 @@ public class DetalleEnvio extends AppCompatActivity {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 urlProducto,
-                null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {

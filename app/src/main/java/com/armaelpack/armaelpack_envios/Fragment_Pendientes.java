@@ -12,14 +12,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
+import com.android.volley.toolbox.*;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
 import com.armaelpack.armaelpack_envios.adapters.PedidoAdapter;
 import com.armaelpack.armaelpack_envios.com.armaelpack.armaelpack_envios.model.Pedido;
@@ -112,14 +110,11 @@ public class Fragment_Pendientes extends Fragment {
             JSONObject object = new JSONObject();
             object.put("iEstado",estadoPendiente);
 
-            JSONArray json = new JSONArray();
-            json.put(object);
-
             RequestQueue requestQueue = Volley.newRequestQueue(getContext());
             JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                     Request.Method.POST,
                     urlPendientes,
-                    json,
+                    object,
                     new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {
@@ -129,14 +124,12 @@ public class Fragment_Pendientes extends Fragment {
                                     for (int i = 0; i < response.length(); i++) {
                                         JSONObject jsonObject = response.getJSONObject(i);
                                         Pedido ped = new Pedido();
-                                        ped.setId(jsonObject.getInt("idPedido"));
+                                        ped.setId(jsonObject.getInt("id"));
                                         ped.setCodigoPedido(jsonObject.getString("codigoPedido"));
-                                        ped.setNomCliente(jsonObject.getString("nombreCliente"));
                                         ped.setTotalNeto(jsonObject.getString("totalNeto"));
                                         ped.setLatitud(jsonObject.getString("latitud"));
                                         ped.setLongitud(jsonObject.getString("longitud"));
-                                        ped.setFechaEmitido(jsonObject.getString("fechaPedido"));
-                                        ped.setFechaEntrega(jsonObject.getString("fechaEntrega"));
+                                        ped.setFechaEntrega(jsonObject.getString("fechaRegistro"));
                                         ped.setCorreo(jsonObject.getString("correo"));
                                         ped.setCelular(jsonObject.getString("celular"));
                                         ped.setEstado(jsonObject.getInt("estado"));
@@ -144,7 +137,7 @@ public class Fragment_Pendientes extends Fragment {
                                         // Control.getMiInstancia().miPedidoActual=ped;
                                         lstPendientes.add(ped);
                                     }
-                                    pedidoAdapter = new PedidoAdapter(getContext(), lstPendientes);
+                                    pedidoAdapter = new PedidoAdapter(getActivity().getApplicationContext(), lstPendientes);
                                     lvPendientes.setAdapter(pedidoAdapter);
                                 }
                             } catch (JSONException j) {
@@ -162,7 +155,6 @@ public class Fragment_Pendientes extends Fragment {
             requestQueue.add(jsonArrayRequest);
         }catch (Exception e){
                 e.printStackTrace();
-
             }
     }
 
